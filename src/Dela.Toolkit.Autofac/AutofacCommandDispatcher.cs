@@ -1,26 +1,29 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+﻿using Autofac;
+using Dela.Toolkit.Application;
+using Microsoft.Extensions.Logging; 
 
-namespace Dela.Toolkit.Application;
+namespace Dela.Toolkit.Autofac;
 
-public class CommandDispatcher : ICommandDispatcher
+public class AutofacCommandDispatcher: ICommandDispatcher
 {
-    private readonly ILogger _logger;
-    private readonly IServiceProvider _serviceProvider; 
+    private readonly ILogger<CommandDispatcher> _logger;
+    //private readonly IServiceProvider _serviceProvider;
+    private readonly ILifetimeScope _scope;
 
-    public CommandDispatcher(ILogger<CommandDispatcher> logger, IServiceProvider serviceProvider)
+    public AutofacCommandDispatcher(ILifetimeScope scope, ILogger<CommandDispatcher> logger)
     {
+        _scope = scope;
         _logger = logger;
-        _serviceProvider = serviceProvider;
-    }
- 
+    } 
 
-    public async Task Dispatch<TCommand>(TCommand command, CancellationToken cancellationToken) where TCommand : ICommand
+    public async Task Dispatch<T>(T command, CancellationToken cancellationToken) where T : Application.ICommand
     {
         try
         {
-            var handler = _serviceProvider.GetRequiredService<ICommandHandler<TCommand>>();
-            await handler.Handle(command, cancellationToken);
+            var handlers = _scope.Resolve<IEnumerable<ICommandHandler<T>>>();
+            foreach (var commandHandler in handlers)
+                await commandHandler.Handle(command, cancellationToken);
+  
         }
         catch (Exception e)
         {
@@ -42,4 +45,3 @@ public class CommandDispatcher : ICommandDispatcher
     //     }
     // }
 }
- 
