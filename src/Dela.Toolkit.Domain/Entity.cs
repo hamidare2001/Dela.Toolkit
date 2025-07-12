@@ -1,6 +1,7 @@
 ﻿namespace Dela.Toolkit.Domain;
 
-public abstract class AggregateRoot<TKey> : Entity<TKey>
+public abstract class Entity<TKey>
 {
+    public TKey Id { get; set; }
     //Todo: to be completed...
 }
