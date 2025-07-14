@@ -1,20 +1,43 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-        <PackageVersion>1.0.0.4</PackageVersion>
-        <AssemblyVersion>1.0.0.4</AssemblyVersion>
-        <FileVersion>1.0.0.4</FileVersion>
-
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+        <PackageId>Dela.Toolkit.Application</PackageId>
+        <Version>1.0.0.10</Version>
+        <Description>A library for implementing the application layer</Description>
+        <PackageProjectUrl>https://github.com/hamidare2001/Dela.Toolkit</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/hamidare2001/Dela.Toolkit</RepositoryUrl>
+        <Authors>Hamidreza Ardekani</Authors>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>  <!-- Or specify a file -->
+        <PackageTags>Command Query Dispatcher</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.7" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.7" /> 
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.7" />
     </ItemGroup>
+
+    <Target Name="CopyOutputToLibs" AfterTargets="Pack" Condition="'$(Configuration)'=='Release'" >
+        <PropertyGroup>
+            <NupkgOutputPath>$(OutputPath)..\$(PackageId).$(Version).nupkg</NupkgOutputPath>
+            <NupkgDestinationDir>$(SolutionDir)\.github\workflows\nupkgs</NupkgDestinationDir>
+        </PropertyGroup>
+
+        <ItemGroup>
+            <NuGetPackageFiles Include="$(NupkgOutputPath)" />
+            <ExistingNupkgFiles Include="$(NupkgDestinationDir)\$(PackageId).*.nupkg" />
+        </ItemGroup>
+
+        <Delete Files="@(ExistingNupkgFiles)" ContinueOnError="true" />
+
+        <Copy SourceFiles="@(NuGetPackageFiles)"
+              DestinationFolder="$(NupkgDestinationDir)" />
+    </Target>
 
 </Project>
