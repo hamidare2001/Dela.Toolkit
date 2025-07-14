@@ -8,7 +8,7 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <PackageId>Dela.Toolkit.Domain</PackageId>
-        <Version>1.0.0.10</Version>
+        <Version>1.0.0.12</Version>
         <Description>A library for implementing the domain layer</Description>
         <PackageProjectUrl>https://github.com/hamidare2001/Dela.Toolkit</PackageProjectUrl>
         <RepositoryUrl>https://github.com/hamidare2001/Dela.Toolkit</RepositoryUrl>
