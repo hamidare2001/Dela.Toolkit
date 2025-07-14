@@ -10,6 +10,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dela.Toolkit.Autofac", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dela.Toolkit.Domain", "src\Dela.Toolkit.Domain\Dela.Toolkit.Domain.csproj", "{3952D388-1817-456D-A214-02D1B08BBE3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dela.Toolkit.ServiceHost", "src\Dela.Toolkit.ServiceHost\Dela.Toolkit.ServiceHost.csproj", "{47B7C2EB-2087-41D2-A357-F5EBE3D1098D}"
+EndProject
+	
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +22,7 @@ Global
 		{D41046C7-AF08-4068-A3CD-4243DE118FA4} = {BFC8FF7F-D02E-4D9F-9989-E919523CAC49}
 		{AC84C1B6-B078-4688-BB2E-A80720ADC888} = {BFC8FF7F-D02E-4D9F-9989-E919523CAC49}
 		{3952D388-1817-456D-A214-02D1B08BBE3A} = {BFC8FF7F-D02E-4D9F-9989-E919523CAC49}
+		{47B7C2EB-2087-41D2-A357-F5EBE3D1098D} = {BFC8FF7F-D02E-4D9F-9989-E919523CAC49} 
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D41046C7-AF08-4068-A3CD-4243DE118FA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -33,5 +37,9 @@ Global
 		{3952D388-1817-456D-A214-02D1B08BBE3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3952D388-1817-456D-A214-02D1B08BBE3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3952D388-1817-456D-A214-02D1B08BBE3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47B7C2EB-2087-41D2-A357-F5EBE3D1098D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47B7C2EB-2087-41D2-A357-F5EBE3D1098D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47B7C2EB-2087-41D2-A357-F5EBE3D1098D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47B7C2EB-2087-41D2-A357-F5EBE3D1098D}.Release|Any CPU.Build.0 = Release|Any CPU 
 	EndGlobalSection
 EndGlobal

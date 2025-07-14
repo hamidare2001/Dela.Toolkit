@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <!--   for nuget   -->
+        <Version>1.0.0.3</Version>
+        <PackageId>Dela.Toolkit.ServiceHost</PackageId>
+        <Description>A library for implemenet Host Service</Description>
+        <PackageTags>.Net Host Service RestApi</PackageTags>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>hamidreza Ardekani</Authors>
+        <PackageProjectUrl>https://github.com/hamidare2001/Dela.Toolkit</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/hamidare2001/Dela.Toolkit</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+ 
+
+</Project>
