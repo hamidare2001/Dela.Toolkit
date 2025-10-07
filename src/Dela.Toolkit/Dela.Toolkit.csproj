@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable> 
+
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+        <PackageId>Dela.Toolkit</PackageId>
+        <Version>1.0.1.0</Version>
+        <Description>A library for csharp</Description>
+        <PackageProjectUrl>https://github.com/hamidare2001/Dela.Toolkit</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/hamidare2001/Dela.Toolkit</RepositoryUrl>
+        <Authors>Hamidreza Ardekani</Authors>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression> 
+        <PackageTags>A library for csharp</PackageTags>
+    </PropertyGroup>
+
+
+    <Target Name="CopyOutputToLibs" AfterTargets="Pack" Condition="'$(Configuration)'=='Release'" >
+        <PropertyGroup>
+            <NupkgOutputPath>$(OutputPath)..\$(PackageId).$(Version).nupkg</NupkgOutputPath>
+            <NupkgDestinationDir>$(SolutionDir)\.github\workflows\nupkgs</NupkgDestinationDir>
+        </PropertyGroup>
+
+        <ItemGroup>
+            <NuGetPackageFiles Include="$(NupkgOutputPath)" />
+            <ExistingNupkgFiles Include="$(NupkgDestinationDir)\$(PackageId).*.nupkg" />
+        </ItemGroup>
+
+        <Delete Files="@(ExistingNupkgFiles)" ContinueOnError="true" />
+
+        <Copy SourceFiles="@(NuGetPackageFiles)"
+              DestinationFolder="$(NupkgDestinationDir)" />
+    </Target>
+
+</Project>
