@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>dotnet-Dela.Toolkit.OutboxProcessor-43eba5d9-93f5-4adc-8014-42c7073f27c6</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Dapper" Version="2.1.66" />
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Dela.Toolkit.Application\Dela.Toolkit.Application.csproj" />
+      <ProjectReference Include="..\Dela.Toolkit.Persistence\Dela.Toolkit.Persistence.csproj" />
+    </ItemGroup>
+</Project>
