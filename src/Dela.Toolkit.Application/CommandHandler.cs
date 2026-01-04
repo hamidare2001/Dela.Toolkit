@@ -4,10 +4,10 @@ public interface ICommand
 {
 }
 
-// public interface ICommandHandler<in TCommand, TCommandResult>  where TCommand : ICommand
-// {
-//     Task<TCommandResult>? Handle(TCommand command, CancellationToken cancellationToken);
-// }
+public interface ICommandHandler<in TCommand, TCommandResult>  where TCommand : ICommand
+{
+    Task<TCommandResult>? Handle(TCommand command, CancellationToken cancellationToken);
+}
 public interface ICommandHandler<in TCommand>  where TCommand : ICommand
 {
     Task Handle(TCommand command, CancellationToken cancellationToken);
