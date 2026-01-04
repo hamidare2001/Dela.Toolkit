@@ -1,15 +1,17 @@
-﻿namespace Dela.Toolkit.Domain.Events;
+﻿namespace Dela.Toolkit.Domain;
 
+public interface IDomainEvent
+{
+    Guid EventId { get; }
+    DateTime PublishDateTime { get; }
+}
 
-public abstract class DomainEvent{
-
-    public Guid EventId { get; private set; }
-
-    public DateTime PublishDateTime { get; private set; }
+public abstract class DomainEvent : IDomainEvent
+{
+    public Guid EventId { get; } = Guid.NewGuid();
+    public DateTime PublishDateTime { get; } = DateTime.Now;
 
     protected DomainEvent()
     {
-        EventId = Guid.NewGuid();
-        PublishDateTime = DateTime.Now;
     }
 }
